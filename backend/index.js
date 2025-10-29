@@ -24,29 +24,29 @@ app.use(express.json());
 //npm install cors
 app.use(cors());
 //on rappelle la route
-app.use("/router", router);
+app.use("/", router);
 
-app.post("/vava", (req, res) => {
-  // Ici, on dit à notre serveur : "Quand quelqu’un envoie une requête POST à l’adresse /vava, fais ce qui suit"
+//logique qui gere les erreurs 404
 
-  const data = req.body;
-  // On récupère les données que la personne a envoyées dans le corps (body) de la requête.
-  // En gros, c’est les infos que le client envoie (comme un formulaire, par exemple).
+app.use((req, res) => {  
+  // Ici, j’utilise app.use() sans préciser de chemin.
+  // Ça veut dire : "si aucune des routes définies avant n’a répondu, alors on arrive ici".
+  // En gros, c’est mon middleware de secours, mon “attrape-tout”.
 
-  console.log("verif des datas", data);
-  // On affiche dans la console du serveur les données reçues, juste pour vérifier ce qu’on a reçu.
-  // C’est utile pour le débogage.
-
-  res.status(201).json({
-    // On prépare la réponse qu’on va renvoyer au client.
-    // Le code "201" veut dire "créé avec succès" (c’est un code HTTP).
-
-    message: data,
-    // On renvoie un objet JSON qui contient un champ "message" avec les données qu’on a reçues.
-    // En gros, on renvoie au client : "ok, j’ai bien reçu tes données, les voilà".
-  });
-  // On termine la réponse.
+  res.status(404).json({  
+    // Je renvoie une réponse avec le code HTTP 404 → ça veut dire "page non trouvée".
+    
+    message: 'page non existante',  
+    // Dans la réponse JSON, j’envoie un petit message explicite.
+    
+    path: req.originalUrl  
+    // Et j’ajoute le chemin demandé, pour savoir quelle URL a posé problème.
+  });  
 });
+
+//si on me demande une route qui n'existe pas
+
+
 
 app.listen(3000, () => {
   console.log("lancement sur le port 3000 TOTO ma gueule ");

@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Retrieve from "./components/Retrieve";
+
+    
+
 
 function App() {
   const [vava, setVava] = useState([]);
@@ -66,7 +70,10 @@ function App() {
           </li>
         </ul>
       )}
-    </div>
+    </div>,
+
+    <Retrieve/>
+    
   );
 }
 
