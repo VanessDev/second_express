@@ -1,21 +1,5 @@
-//refaire la base pour paremetrer mon api et mon server
-//faire un endpoint en POST
-//ce endpoint recevra une request avec un tableau et le renverra dans sa response
-//faire un console.log du tableau que vous recuperez
-
 const express = require("express");
-const cors = require("cors");
-
-const app = express();
-//middleware(prog qui se lance automatiquement)(outil)va intercepter la requête et va la transformer en json comprehensible pour JS(parse: analyse)
-//middleware qui fait le lien entre le language de la request et l'environnement js node
-//pour que les deux communiquent bien (convertit le language de la request en json)
-const router = require("./routes/home.route");
-app.use(express.json());
-//npm install cors
-app.use(cors());
-//on rappelle la route
-app.use("/router", router);
+const router = express.Router();
 
 app.post("/vava", (req, res) => {
   // Ici, on dit à notre serveur : "Quand quelqu’un envoie une requête POST à l’adresse /vava, fais ce qui suit"
@@ -39,6 +23,5 @@ app.post("/vava", (req, res) => {
   // On termine la réponse.
 });
 
-app.listen(3000, () => {
-  console.log("lancement sur le port 3000 TOTO ma gueule ");
-});
+//Grâce à module.exports = router, le fichier routes.js renvoie le router quand on le require.
+module.exports = router;
