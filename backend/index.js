@@ -3,8 +3,17 @@
 //ce endpoint recevra une request avec un tableau et le renverra dans sa response
 //faire un console.log du tableau que vous recuperez
 
-const express = require("express");
-const cors = require("cors");
+const express = require("express");  
+// Là, je vais chercher le module "express" que j’ai installé avec npm.
+// Express, c’est le framework qui simplifie la création de serveurs web en Node.js.
+// Donc ici, je le charge dans la constante "express" pour pouvoir ensuite créer mon application, mes routes, etc.
+
+
+const cors = require("cors");  
+// Ici, je vais chercher le module "cors" que j’ai installé avec npm.
+// CORS, ça sert à autoriser ou bloquer les requêtes qui viennent d’un autre domaine (par exemple, un front React qui parle à mon API).
+// Donc là, je le charge dans la constante "cors" pour pouvoir l’utiliser ensuite comme un middleware dans mon app Express.
+
 
 const app = express();
 //middleware(prog qui se lance automatiquement)(outil)va intercepter la requête et va la transformer en json comprehensible pour JS(parse: analyse)

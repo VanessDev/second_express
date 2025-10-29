@@ -1,5 +1,9 @@
-const express = require("express");
-const router = express.Router();
+const router = require('express').Router();  
+// Ici, je vais chercher Express, et je récupère directement son "Router".
+// En gros, ça me donne un mini-routeur indépendant que je peux utiliser pour définir des routes séparées de mon app principale.
+
+
+
 
 app.post("/vava", (req, res) => {
   // Ici, on dit à notre serveur : "Quand quelqu’un envoie une requête POST à l’adresse /vava, fais ce qui suit"
@@ -23,5 +27,6 @@ app.post("/vava", (req, res) => {
   // On termine la réponse.
 });
 
-//Grâce à module.exports = router, le fichier routes.js renvoie le router quand on le require.
-module.exports = router;
+module.exports = router;  
+// Et là, je dis à Node : "ok, ce fichier va exporter ce routeur-là".
+// Comme ça, quand quelqu’un fera un require() de ce fichier, il récupérera ce routeur prêt à l’emploi.
