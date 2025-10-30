@@ -14,6 +14,8 @@ function Retrieve() {
   const [error, setError] = useState(null);
 
   // Cette fonction se lance quand je clique sur "Envoyer"
+  // Quand le formulaire est soumis, React appelle ta fonction 
+  // et lui passe automatiquement un objet “événement” en paramètre. Cet objet, c’est le fameux e.
   const handleSubmit = async (e) => {
     e.preventDefault(); // J’empêche le formulaire de recharger la page
     setError(null); // J’efface toute ancienne erreur

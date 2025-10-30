@@ -45,6 +45,8 @@ function Count() {
         try {
           // J'essaie de lire le message d'erreur envoyé par le backend
           const err = await res.json();
+          // Si j’ai un message d’erreur, je l’ajoute à la variable msg après un petit tiret, 
+          // histoire de préciser ce qui s’est passé
           if (err?.message) msg += ` – ${err.message}`;
         } catch {}
         throw new Error(msg); // Je lance une erreur pour passer dans le catch
