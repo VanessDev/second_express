@@ -89,3 +89,52 @@ router.post("/add", (req, res) => {
 module.exports = router;
 // Et là, je dis à Node : "ok, ce fichier va exporter ce routeur-là".
 // Comme ça, quand quelqu’un fera un require() de ce fichier, il récupérera ce routeur prêt à l’emploi.
+// 4. Vérification du mot de passe
+//     Le front récupère un mot de passe et sa confirmation (dans le même formulaire).
+//     Le back vérifie si les deux sont identiques.
+//     Le front affiche un message de validation du mot de passe (ou une erreur si ce n’est pas le cas).
+
+
+
+router.post('/', (req, res) => {
+
+    const {password, confirmPassword} = req.body;
+
+    if(password === confirmPassword) {
+
+        res.status(200).json({
+            message : "Votre mot de passe est valide.",
+        });
+
+    } else {
+
+        res.status(405).json({
+            message : "Les mot de passe doivent être identique."
+        })
+
+    }
+
+});
+
+module.exports = router;
+
+
+//Exo 5
+
+router.post('/', (req, res) => {
+
+    const {nbr1, nbr2, nbr3, nbr4, nbr5} = req.body;
+
+    let somme = nbr1 + nbr2 + nbr3 + nbr4 + nbr5;
+    let moy = somme / 5;
+    let numbers = [nbr1, nbr2, nbr3, nbr4, nbr5];
+
+    let max = Math.max(...numbers);
+
+    res.status(200).json({
+        message : "La somme est " + somme + ". La moyenne est " + moy + ". Le plus gran nombre est " + max + ".",
+    });
+
+});
+
+module.exports = router;
